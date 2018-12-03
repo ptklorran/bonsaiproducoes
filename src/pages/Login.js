@@ -1,13 +1,25 @@
 import React, { Component } from 'react';
-
-import { Button } from 'react-materialize'
+import { AUTH } from '../services/Firebase'
 
 export default class Login extends Component {
+
+  componentDidMount() {
+    console.log('criando')
+    AUTH.onAuthStateChanged(user => {
+      if (user) {
+        console.log('logado')
+        console.log(user)
+      } else {
+        console.log('deslogado')
+      }
+    })
+    console.log('criado')
+  }
+
   render() {
     return (
-        <div>
-            <Button>Olá Mundo</Button>
-        </div>
+      <div>
+      </div>
     );
   }
 }
